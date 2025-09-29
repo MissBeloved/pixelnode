@@ -1155,15 +1155,14 @@ preloader
 ------------------------------------------- */
 .mil-preloader {
   position: fixed;
-  z-index: 9999;
+  z-index: 10000;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  background: linear-gradient(to bottom right, #3b3b3b, #000000);
+  background: linear-gradient(to bottom right, #545653, #000000);
   background-size: 400% 400%;
   animation: gradient 6s ease infinite;
-  /* background-color: rgb(0, 0, 0); */
 }
 
 @keyframes gradient {
@@ -1233,7 +1232,6 @@ preloader
   opacity: 0;
   height: 100%;
   background-color: #7eff00;
-  /* background-color: rgba(255, 255, 255, 0.9); */
 }
 
 .mil-preloader.mil-hidden {
@@ -1929,7 +1927,16 @@ banner
 
 ------------------------------------------- */
 .mil-banner {
-  height: 100vh;
+  height: 100svh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mil-banner .mil-container {
+  height: auto;
+  width: 100%;
 }
 
 .mil-banner .container {
@@ -1944,14 +1951,8 @@ banner
 
 .mil-banner .mil-banner-content {
   width: 100%;
-  padding-bottom: 120px;
   position: relative;
-}
-
-@media screen and (max-width: 992px) {
-  .mil-banner .mil-banner-content {
-    padding-bottom: 90px;
-  }
+  bottom: 20%;
 }
 
 .mil-banner .mil-lines-place {
@@ -1964,12 +1965,6 @@ banner
   padding: 150px 0 0 0;
 }
 
-@media screen and (max-width: 1200px) {
-  .mil-inner-banner .mil-banner-content {
-    padding: 180px 0 0 0;
-  }
-}
-
 .mil-banner-personal {
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.1);
@@ -1980,21 +1975,8 @@ banner
   padding-top: 90px;
 }
 
-@media screen and (max-width: 992px) {
-  .mil-banner-personal .mil-banner-content {
-    padding-top: 180px;
-  }
-}
-
 .mil-banner-personal .mil-banner-content .mil-personal-text {
   margin-bottom: 300px;
-}
-
-@media screen and (max-width: 992px) {
-  .mil-banner-personal .mil-banner-content .mil-personal-text {
-    margin-bottom: 80px;
-    text-align: center;
-  }
 }
 
 .mil-banner-personal .mil-banner-content .mil-banner-panel {
@@ -2014,23 +1996,6 @@ banner
   top: calc(100vh - 180px);
   left: 0;
   width: 100%;
-}
-
-@media screen and (max-width: 992px) {
-  .mil-banner-personal .mil-banner-content .mil-banner-panel {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    height: auto;
-    padding: 60px 30px;
-  }
-
-  .mil-banner-personal .mil-banner-content .mil-banner-panel h5 {
-    margin-bottom: 60px;
-    text-align: center;
-    width: 80%;
-  }
 }
 
 .mil-banner-personal .mil-banner-content .mil-banner-panel .mil-right {
@@ -2064,6 +2029,40 @@ banner
 }
 
 @media screen and (max-width: 992px) {
+  .mil-banner-personal {
+    height: auto;
+  }
+
+  .mil-banner .mil-banner-content {
+    padding-bottom: 90px;
+  }
+
+  .mil-banner-personal .mil-banner-content {
+    padding-top: 180px;
+  }
+
+  .mil-banner-personal .mil-banner-content .mil-personal-text {
+    margin-bottom: 80px;
+    text-align: center;
+  }
+
+  .mil-banner-personal .mil-banner-content .mil-banner-panel {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    height: auto;
+    bottom: 0;
+    top: auto;
+    padding: 60px 30px;
+  }
+
+  .mil-banner-personal .mil-banner-content .mil-banner-panel h5 {
+    margin-bottom: 60px;
+    text-align: center;
+    width: 80%;
+  }
+
   .mil-banner-personal .mil-banner-content .mil-banner-panel .mil-right {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -2078,28 +2077,33 @@ banner
   }
 }
 
-.mil-banner-personal .mil-banner-content .mil-banner-panel .mil-button {
-  margin: 0 !important;
-}
-
-@media screen and (max-width: 992px) {
-  .mil-banner-personal .mil-banner-content .mil-banner-panel {
-    bottom: 0;
-    top: auto;
-  }
-}
-
 @media screen and (max-width: 768px) {
   .mil-banner-personal .mil-banner-content .mil-banner-panel {
     position: static;
     margin-bottom: 90px;
   }
+
+  .mil-portrait-frame {
+    height: 400px;
+  }
+
+  .mil-portrait-frame img {
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: top;
+    object-position: top;
+  }
 }
 
-@media screen and (max-width: 992px) {
-  .mil-banner-personal {
-    height: auto;
+@media screen and (max-width: 1200px) {
+  .mil-inner-banner .mil-banner-content {
+    padding: 180px 0 0 0;
   }
+}
+
+
+.mil-banner-personal .mil-banner-content .mil-banner-panel .mil-button {
+  margin: 0 !important;
 }
 
 .mil-portrait-frame {
@@ -2123,18 +2127,87 @@ banner
   opacity: 0.6;
 }
 
-@media screen and (max-width: 768px) {
-  .mil-portrait-frame {
-    height: 400px;
-  }
-
-  .mil-portrait-frame img {
-    -o-object-fit: cover;
-    object-fit: cover;
-    -o-object-position: top;
-    object-position: top;
+@media (min-width: 993px) and (max-width: 1200.98px) {
+  .mil-banner .mil-banner-content {
+    position: relative;
+    bottom: 15%;
+    padding-left: 5%;
   }
 }
+
+@media (min-width: 769px) and (max-width: 992.98px) {
+  .mil-banner .mil-banner-content {
+    position: relative;
+    bottom: 5%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 768.98px) {
+  .mil-banner .mil-banner-content {
+    position: relative;
+    bottom: 5%;
+  }
+
+  .mil-banner .mil-banner-content h1 {
+    font-size: 4rem;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 767.98px) {
+  .mil-banner .mil-banner-content {
+    position: relative;
+    bottom: 50px;
+  }
+
+  .mil-banner .mil-banner-content h1 {
+    font-size: 3.5rem;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 700.98px) {
+  .mil-banner .mil-banner-content {
+    position: relative;
+    bottom: 75px;
+  }
+
+  .mil-banner .mil-banner-content h1 {
+    font-size: 2.7rem;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 500.98px) {
+  .mil-banner .mil-banner-content {
+    position: relative;
+  }
+
+  .mil-banner .mil-banner-content h1 {
+    position: relative;
+    top: 20px;
+  }
+
+  .mil-banner .mil-banner-content .mil-btn-space {
+    position: relative;
+    bottom: 15px;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 374.98px) {
+  .mil-banner .mil-banner-content {
+    position: relative;
+    bottom: 10px;
+  }
+
+  .mil-banner .mil-banner-content h1 {
+    position: relative;
+    top: 50px;
+  }
+
+  .mil-banner .mil-banner-content p {
+    position: relative;
+    top: 25px;
+  }
+}
+
 
 /* -------------------------------------------
 
@@ -2205,73 +2278,32 @@ circle text
   }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (min-width:1200px) {
   .mil-circle-text {
-    top: 70%;
-    right: -5%;
+    top: 80%;
   }
 }
 
-@media screen and (min-width: 476px) and (max-width: 579px) {
-  .mil-circle-text {
-    top: 70%;
-  }
-}
-
-@media screen and (max-width: 370px) {
-  .mil-circle-text {
-    top: 70%;
-    right: -15%;
-  }
-}
-
-@media screen and (min-width: 993px) and (max-width: 1168px) {
-  .mil-space {
-    position: relative;
-    top: 4%;
-  }
-}
-
-@media screen and (min-width: 493px) and (max-width: 768px) {
-  .mil-space {
-    position: relative;
-    bottom: 5%;
-  }
-
-  .mil-space h1 {
-    font-size: 3rem;
-  }
-}
-
-@media screen and (min-width: 501px) and (max-width: 579px) {
-  .mil-space {
-    position: relative;
-    bottom: 10%;
-  }
-
+@media (min-width: 993px) and (max-width: 1200.98px) {
   .mil-circle-text {
     top: 75%;
   }
 }
 
-@media screen and (min-width: 476px) and (max-width: 492px) {
-  .mil-space {
-    position: relative;
-    bottom: 7%;
+@media (min-width: 501px) and (max-width: 700.98px) {
+  .mil-circle-text {
+    top: 75%;
+    right: 20%;
   }
 }
 
-@media screen and (max-width: 375px) {
-  .mil-space h1 {
-    position: relative;
-    top: 40px;
-  }
-
-  .mil-space p {
-    position: relative;
-    top: 30px;
+@media screen and (max-width: 387px) {
+  .mil-circle-text {
+    top: 70%;
+    right: -10%;
   }
 }
+
 
 /* -------------------------------------------
 
@@ -2369,8 +2401,8 @@ dodecahedron
 }
 
 .mil-position-1 {
-  top: 100px;
-  right: 100px;
+  top: 0px;
+  right: 90px;
 }
 
 .mil-position-1 .mil-pentagon div {
@@ -2378,8 +2410,8 @@ dodecahedron
 }
 
 .mil-position-2 {
-  top: -60px;
-  left: 15%;
+  top: -200px;
+  left: 20%;
 }
 
 .mil-position-2 .mil-pentagon div {
@@ -2398,8 +2430,8 @@ dodecahedron
 }
 
 .mil-position-3 {
-  bottom: -100px;
-  right: 35%;
+  bottom: -30px;
+  right: 45%;
 }
 
 .mil-position-3 .mil-pentagon div {
@@ -3227,31 +3259,31 @@ revievs
 }
 
 .mil-revi-pagination .swiper-pagination-bullet .mil-custom-dot.mil-slide-1 {
-  background-image: url(../images/faces/customers/person.jpg);
+  background-image: url(../images/faces/customers/1.jpg);
 }
 
 .mil-revi-pagination .swiper-pagination-bullet .mil-custom-dot.mil-slide-2 {
-  background-image: url(../images/faces/customers/person.jpg);
+  background-image: url(../images/faces/customers/1.jpg);
 }
 
 .mil-revi-pagination .swiper-pagination-bullet .mil-custom-dot.mil-slide-3 {
-  background-image: url(../images/faces/customers/person.jpg);
+  background-image: url(../images/faces/customers/1.jpg);
 }
 
 .mil-revi-pagination .swiper-pagination-bullet .mil-custom-dot.mil-slide-4 {
-  background-image: url(../images/faces/customers/person.jpg);
+  background-image: url(../images/faces/customers/1.jpg);
 }
 
 .mil-revi-pagination .swiper-pagination-bullet .mil-custom-dot.mil-slide-5 {
-  background-image: url(../images/faces/customers/person.jpg);
+  background-image: url(../images/faces/customers/1.jpg);
 }
 
 .mil-revi-pagination .swiper-pagination-bullet .mil-custom-dot.mil-slide-6 {
-  background-image: url(../images/faces/customers/person.jpg);
+  background-image: url(../images/faces/customers/1.jpg);
 }
 
 .mil-revi-pagination .swiper-pagination-bullet .mil-custom-dot.mil-slide-7 {
-  background-image: url(../images/faces/customers/person.jpg);
+  background-image: url(../images/faces/customers/1.jpg);
 }
 
 .mil-revi-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
@@ -3788,7 +3820,7 @@ portfolio
   pointer-events: none;
 }
 
-.swiper-slide.swiper-slide-active .mil-portfolio-item .mil-descr {
+.swiper-slide .swiper-slide-active .mil-portfolio-item .mil-descr {
   pointer-events: all;
 }
 
@@ -4945,4 +4977,158 @@ html.is-animating .mil-menu-frame {
   opacity: 0;
   -webkit-transition-delay: 0.3s;
   transition-delay: 0.3s;
+}
+
+
+
+/* -------------------------------------------
+
+Loading Animation before popup
+
+------------------------------------------- */
+
+
+#mil-loading {
+  height: 100svh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  position: fixed;
+  top: 0px;
+}
+
+.bubble1,
+.bubble2,
+.bubble3 {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: white;
+  margin: 0 10px;
+  box-shadow: 0 0 10px rgb(100, 100, 100);
+  animation-name: loading;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.bubble1 {
+  animation-delay: 0s;
+}
+
+.bubble2 {
+  animation-delay: 0.3s;
+}
+
+.bubble3 {
+  animation-delay: 0.6s;
+}
+
+@keyframes loading {
+
+  0%,
+  100% {
+    height: 15px;
+    width: 15px;
+    opacity: 1;
+  }
+
+  50% {
+    height: 7px;
+    width: 7px;
+    opacity: 0.6;
+  }
+}
+
+/* -------------------------------------------
+
+Contact form popup
+
+------------------------------------------- */
+.mil-popup-container {
+  width: 100%;
+  height: 100svh;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  position: fixed;
+  top: 0px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#mil-alert {
+  width: 500px;
+  height: 270px;
+  /* background: linear-gradient(to right, #7eff00, #0f0f0f, #7eff00); */
+  background: transparent;
+  backdrop-filter: blur(10px);
+  /* background-size: 200%; */
+  box-shadow: 0px 0px 25px rgb(133, 133, 133);
+  /* animation: animationgradient 2.5s linear infinite; */
+  margin: 25px;
+  border-radius: 28px;
+  /* color: white; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes animationgradient {
+  to {
+    background-position: 200%;
+  }
+}
+
+
+.mil-popup {
+  width: 98%;
+  height: 97%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 25px;
+}
+
+.mil-popup #popup-message1 {
+  margin: 10px;
+  color: #7eff00;
+  text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.6);
+}
+
+.mil-popup h3 {
+  font-weight: 300;
+}
+
+.mil-popup p {
+  text-align: center;
+}
+
+.mil-popup #btn {
+  height: 50px;
+  width: 150px;
+  font-size: 15px;
+  background-color: #7eff00;
+  border: none;
+  border-radius: 25px;
+  margin: 15px 0 15px 0;
+
+  /* Smooth transitions */
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.mil-popup button:hover {
+  opacity: 0.8;
+  font-weight: bold;
+  transform: scale(1.05);
+  /* Slight grow */
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }

@@ -56,13 +56,13 @@ $(function () {
 
     timeline.fromTo(
         ".mil-animation-1 .mil-h3", {
-            y: "30px",
-            opacity: 0
-        }, {
-            y: "0px",
-            opacity: 1,
-            stagger: 0.4
-        },
+        y: "30px",
+        opacity: 0
+    }, {
+        y: "0px",
+        opacity: 1,
+        stagger: 0.4
+    },
     );
 
     timeline.to(".mil-animation-1 .mil-h3", {
@@ -488,7 +488,7 @@ $(function () {
             "zoom",
             "fullScreen",
             "close"
-          ],
+        ],
         loop: false,
         protect: true
     });
@@ -571,7 +571,12 @@ $(function () {
         slidesPerView: 1,
         spaceBetween: 30,
         speed: 800,
+        loop: true,
         parallax: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
         navigation: {
             nextEl: '.mil-portfolio-next',
             prevEl: '.mil-portfolio-prev',
@@ -590,7 +595,12 @@ $(function () {
         slidesPerView: 1,
         spaceBetween: 30,
         speed: 800,
+        loop: true,
         parallax: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
         navigation: {
             nextEl: '.mil-portfolio-next',
             prevEl: '.mil-portfolio-prev',
@@ -822,17 +832,20 @@ $(function () {
                 ease: 'sine',
             });
         });
+
         /***************************
 
         main menu
 
         ***************************/
+
         $('.mil-has-children a').on('click', function () {
             $('.mil-has-children ul').removeClass('mil-active');
             $('.mil-has-children a').removeClass('mil-active');
             $(this).toggleClass('mil-active');
             $(this).next().toggleClass('mil-active');
         });
+
         /***************************
 
         scroll animations
@@ -881,7 +894,6 @@ $(function () {
 
         const parallaxImage = document.querySelectorAll(".mil-parallax");
 
-
         if ($(window).width() > 960) {
             parallaxImage.forEach((section) => {
                 var value1 = $(section).data("value-1");
@@ -918,22 +930,25 @@ $(function () {
                 }
             });
         });
+
         /***************************
 
         fancybox
 
         ***************************/
+
         $('[data-fancybox="gallery"]').fancybox({
             buttons: [
-            "slideShow",
-            "zoom",
-            "fullScreen",
-            "close"
-          ],
+                "slideShow",
+                "zoom",
+                "fullScreen",
+                "close"
+            ],
             loop: false,
             protect: true
         });
         $.fancybox.defaults.hash = false;
+
         /***************************
 
         reviews slider
@@ -964,6 +979,7 @@ $(function () {
         infinite slider
 
         ***************************/
+
         var swiper = new Swiper('.mil-infinite-show', {
             slidesPerView: 2,
             spaceBetween: 30,
@@ -1012,7 +1028,12 @@ $(function () {
             slidesPerView: 1,
             spaceBetween: 30,
             speed: 800,
+            loop: true,
             parallax: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
             navigation: {
                 nextEl: '.mil-portfolio-next',
                 prevEl: '.mil-portfolio-prev',
@@ -1031,8 +1052,12 @@ $(function () {
             slidesPerView: 1,
             spaceBetween: 30,
             speed: 800,
+            loop: true,
             parallax: true,
-            navigation: {
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            }, navigation: {
                 nextEl: '.mil-portfolio-next',
                 prevEl: '.mil-portfolio-prev',
             },
@@ -1048,5 +1073,72 @@ $(function () {
         });
 
     });
+
+
+
+    function loading_on() {
+        document.getElementById('mil-loading').style.display = 'flex';
+    }
+
+    /***************************
+
+    Contact mail backend
+
+***************************/
+
+    // ✅ Initialize EmailJS once
+    emailjs.init({
+        publicKey: "cwco0tPcbWQ-PC7R1"
+    });
+
+    // ✅ Function to bind contact form listener
+    function bindContactForm() {
+        const form = document.getElementById("contact-form");
+        if (!form) return;
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            loading_on();
+            const now = new Date().toLocaleString();
+            const templateParams = {
+                name: document.getElementById("clientname").value,
+                email: document.getElementById("clientemail").value,
+                subject: document.getElementById("clientsub").value,
+                contact: document.getElementById("clientcontact").value,
+                msg: document.getElementById("clientmsg").value,
+                date_time: now
+            };
+
+            emailjs.send("service_dl8o4pe", "template_q24hmqa", templateParams)
+                .then(() => {
+                    form.reset();
+                    document.getElementById('mil-loading').style.display = 'none';
+        
+                    document.getElementById("mil-contact-name").innerHTML = templateParams.name;
+                    document.querySelector('.mil-popup-container').style.display = 'flex';
+                }, (error) => {
+                    // Update message for failure
+                    document.getElementById('mil-loading').style.display = 'none';
+                    document.getElementById("popup-message1").innerHTML = "Sorry."
+                    document.getElementById("popup-message1").style.color = "red";
+                    document.getElementById("popup-message2").innerHTML =
+                        "Something went wrong while sending your message.<br>Please try again later.";
+                    document.getElementById("btn").style.backgroundColor = 'red';
+                    
+                    form.reset();
+                    console.error("EmailJS Error:", error);
+                });
+        });
+    }
+
+    window.closePopup = function () {
+        document.querySelector('.mil-popup-container').style.display = 'none';
+    }
+
+    // ✅ Bind form when page loads
+    document.addEventListener("DOMContentLoaded", bindContactForm);
+
+    // ✅ Re-bind form after Swup content is replaced
+    document.addEventListener("swup:contentReplaced", bindContactForm);
 
 });
