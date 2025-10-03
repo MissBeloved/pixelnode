@@ -1160,7 +1160,7 @@ preloader
   left: 0;
   width: 100%;
   height: 100vh;
-  background: linear-gradient(to bottom right, #545653, #000000);
+  background: linear-gradient(to bottom right, #000000, #545653);
   background-size: 400% 400%;
   animation: gradient 6s ease infinite;
 }
