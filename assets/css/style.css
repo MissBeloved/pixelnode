@@ -1170,11 +1170,11 @@ preloader
     background-position: 0% 50%;
   }
 
-  50% {
+  40% {
     background-position: 100% 90%;
   }
 
-  100% {
+  80% {
     background-position: 0% 50%;
   }
 }
