@@ -716,14 +716,14 @@ button
   fill: rgb(0, 0, 0);
 }
 
-.mil-button:hover {
+.mil-subscribe-form:hover .mil-button, .mil-button:hover {
   -webkit-transform: scale(1.015);
   transform: scale(1.015);
   -webkit-filter: brightness(110%);
   filter: brightness(110%);
 }
 
-.mil-button:hover svg {
+.mil-subscribe-form:hover .mil-button, .mil-button:hover svg {
   -webkit-transform: scale(1.15);
   transform: scale(1.15);
 }
@@ -1170,11 +1170,11 @@ preloader
     background-position: 0% 50%;
   }
 
-  40% {
+  50% {
     background-position: 100% 90%;
   }
 
-  80% {
+  100% {
     background-position: 0% 50%;
   }
 }
@@ -2302,6 +2302,18 @@ circle text
     top: 70%;
     right: -10%;
   }
+}
+
+/* -------------------------------------------
+
+Side mini text
+
+------------------------------------------- */
+.mil-mini {
+  display: flex;
+  text-align: right;
+  align-items: center;
+  justify-content: right;
 }
 
 
@@ -3634,9 +3646,24 @@ footer
   position: relative;
   height: 70px;
   width: 100%;
+  border-radius: 70px;
+  padding: 0 20px 0 50px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgb(128, 128, 128);
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.mil-subscribe-form:hover span{
+  color: #a5a5a5;
 }
 
-.mil-subscribe-form input {
+/* .mil-subscribe-form:hover .mil-button{
+@apply .mil-button
+} */
+/* .mil-subscribe-form input {
   height: 100%;
   width: 100%;
   background-color: rgba(255, 255, 255, 0.1);
@@ -3716,7 +3743,7 @@ footer
   height: 100%;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.1);
-}
+} */
 
 /* -------------------------------------------
 
